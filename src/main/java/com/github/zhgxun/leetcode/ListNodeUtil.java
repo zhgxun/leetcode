@@ -26,4 +26,21 @@ public class ListNodeUtil {
 
         System.out.println(sb.toString());
     }
+
+    /**
+     * 链表生成
+     *
+     * @param list 原始数据元素
+     * @return 生成的新链表
+     */
+    public static ListNode getListNode(int[] list) {
+        ListNode head = new ListNode(0);
+        ListNode node = head;
+        for (int i : list) {
+            node.next = new ListNode(i);
+            node = node.next;
+        }
+
+        return head.next;
+    }
 }

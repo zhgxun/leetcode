@@ -69,7 +69,7 @@ public class AddTwoNumbers {
     }
 
     // 反转链表
-    private static ListNode rev(ListNode head) {
+    public static ListNode rev(ListNode head) {
         ListNode nodeHead = null;
 
         ListNode temp = head;

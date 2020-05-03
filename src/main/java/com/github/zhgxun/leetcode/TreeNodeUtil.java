@@ -1,28 +1,67 @@
 package com.github.zhgxun.leetcode;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class TreeNodeUtil {
 
     private TreeNodeUtil() {
     }
 
-    public static void PreOrder(TreeNode root) {
-
+    // 前序遍历
+    public static List<Integer> preOrderTraversal(TreeNode root) {
+        List<Integer> resultList = new ArrayList<>();
+        if (root == null) {
+            return resultList;
+        }
+        preOrder(root, resultList);
+        return resultList;
     }
 
-    public static void inOrder(TreeNode root) {
+    public static void preOrder(TreeNode root, List<Integer> resultList) {
         if (root == null) {
             return;
         }
-        if (root.left != null) {
-            inOrder(root.left);
-        }
-        System.out.println(root.val);
-        if (root.right != null) {
-            inOrder(root.right);
-        }
+        resultList.add(root.val);
+        preOrder(root.left, resultList);
+        preOrder(root.right, resultList);
     }
 
-    public static void afterOrder(TreeNode root) {
+    // 中序遍历
+    public static List<Integer> inOrderTraversal(TreeNode root) {
+        List<Integer> resultList = new ArrayList<>();
+        if (root == null) {
+            return resultList;
+        }
+        inOrder(root, resultList);
+        return resultList;
+    }
 
+    public static void inOrder(TreeNode root, List<Integer> resultList) {
+        if (root == null) {
+            return;
+        }
+        inOrder(root.left, resultList);
+        resultList.add(root.val);
+        inOrder(root.right, resultList);
+    }
+
+    // 后序遍历
+    public static List<Integer> postOrderTraversal(TreeNode root) {
+        List<Integer> resultList = new ArrayList<>();
+        if (root == null) {
+            return resultList;
+        }
+        postOrder(root, resultList);
+        return resultList;
+    }
+
+    public static void postOrder(TreeNode root, List<Integer> resultList) {
+        if (root == null) {
+            return;
+        }
+        postOrder(root.left, resultList);
+        postOrder(root.right, resultList);
+        resultList.add(root.val);
     }
 }

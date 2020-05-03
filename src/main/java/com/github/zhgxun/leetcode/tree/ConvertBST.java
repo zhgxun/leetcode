@@ -1,7 +1,6 @@
 package com.github.zhgxun.leetcode.tree;
 
 import com.github.zhgxun.leetcode.TreeNode;
-import com.github.zhgxun.leetcode.TreeNodeUtil;
 
 /**
  * 538. 把二叉搜索树转换为累加树
@@ -16,7 +15,6 @@ public class ConvertBST {
         TreeNode root = new TreeNode(5);
         root.left = new TreeNode(2);
         root.right = new TreeNode(13);
-        TreeNodeUtil.inOrder(new ConvertBST().convertBST(root));
     }
 
     private int sum = 0;

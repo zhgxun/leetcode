@@ -3,6 +3,9 @@ package com.github.zhgxun.leetcode;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * 树的前序后续和中序递归遍历
+ */
 public class TreeNodeUtil {
 
     private TreeNodeUtil() {

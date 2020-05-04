@@ -34,12 +34,12 @@ public class LevelOrderBottom {
         if (levels.size() == level) {
             levels.add(new ArrayList<>());
         }
+        levels.get(level).add(root.val);
         if (root.left != null) {
             helper(root.left, level + 1);
         }
         if (root.right != null) {
             helper(root.right, level + 1);
         }
-        levels.get(level).add(root.val);
     }
 }

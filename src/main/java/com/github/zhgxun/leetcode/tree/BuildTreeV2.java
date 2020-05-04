@@ -48,6 +48,7 @@ public class BuildTreeV2 {
         TreeNode root = new TreeNode(rootVale);
         preIndex--;
         int index = map.get(rootVale);
+        // 递归的时候一定要先找右子树，因为post_idx在后序遍历数组往前移动（post_idx--）的时候，先指向右子节点的值
         root.right = helper(index + 1, inRight);
         root.left = helper(inLeft, index);
 

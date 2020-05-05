@@ -54,6 +54,10 @@
 
 怎么记录树的路径问题，判断路径总和可参考 [112. 路径总和](https://leetcode-cn.com/problems/path-sum/)
 
+[114. 二叉树展开为链表](https://leetcode-cn.com/problems/flatten-binary-tree-to-linked-list/)
+
+题目表面上是前序遍历，但是前序遍历很难解决，需要记录有孩子。如果想到后序遍历，则柳暗花明。
+
 ## 2. 链表
 
 [445. 两数相加 II](https://leetcode-cn.com/problems/add-two-numbers-ii/)

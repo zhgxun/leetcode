@@ -48,6 +48,12 @@
 
 [617. 合并二叉树](https://leetcode-cn.com/problems/merge-two-binary-trees/)
 
+### 1.5 树的路径
+
+[113. 路径总和 II](https://leetcode-cn.com/problems/path-sum-ii/)
+
+怎么记录树的路径问题，判断路径总和可参考 [112. 路径总和](https://leetcode-cn.com/problems/path-sum/)
+
 ## 2. 链表
 
 [445. 两数相加 II](https://leetcode-cn.com/problems/add-two-numbers-ii/)

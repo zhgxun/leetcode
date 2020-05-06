@@ -22,16 +22,12 @@ public class InvertTree {
         tree.right.right = new TreeNode(9);
 
         System.out.println(TreeNodeUtil.preOrderTraversal(tree));
-        new InvertTree().invertTree(tree);
+        System.out.println(TreeNodeUtil.inOrderTraversal(new InvertTree().invertTree(tree)));
     }
 
     public TreeNode invertTree(TreeNode root) {
         if (root == null) {
             return null;
-        }
-
-        if (root.left == null && root.right == null) {
-            return root;
         }
 
         TreeNode left = root.left;

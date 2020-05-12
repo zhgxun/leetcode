@@ -87,3 +87,9 @@
 [725. 分隔链表](https://leetcode-cn.com/problems/split-linked-list-in-parts/)
 
 [24. 两两交换链表中的节点](https://leetcode-cn.com/problems/swap-nodes-in-pairs/)
+
+## 3. 数组
+
+[17. 电话号码的字母组合](https://leetcode-cn.com/problems/letter-combinations-of-a-phone-number/)
+
+回溯法穷举。

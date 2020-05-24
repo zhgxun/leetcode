@@ -1,11 +1,43 @@
 package com.github.zhgxun.leetcode;
 
+import java.util.ArrayDeque;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 public class Simple {
+
+    public int[] maxSlidingWindow(int[] nums, int k) {
+        int[] res = new int[nums.length -k + 1];
+        ArrayDeque<Integer> queue = new ArrayDeque<>(k);
+        int index = 0;
+        for (int i = 0; i < k; i++) {
+            clean(queue, nums, i, k);
+            queue.addLast(i);
+        }
+        res[index++] = nums[queue.getFirst()];
+        for (int i = k; i < nums.length; i++) {
+            clean(queue, nums, i, k);
+            queue.addLast(i);
+            res[index++] = nums[queue.getFirst()];
+        }
+
+        return res;
+
+    }
+
+    public void clean(ArrayDeque<Integer> queue, int[] nums, int i, int k) {
+        // 队列满则移除队列头元素
+        if (!queue.isEmpty() && queue.getFirst() == i - k) {
+            queue.removeFirst();
+        }
+
+        // 在有效队列中, 如果当前值比已有元素都大则保留最大值
+        while (!queue.isEmpty() && nums[i] > nums[queue.getLast()]) {
+            queue.removeLast();
+        }
+    }
 
     public static void main(String[] args) {
         new Simple().myPow(2, 10);

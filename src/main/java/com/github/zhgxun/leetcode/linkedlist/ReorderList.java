@@ -1,6 +1,10 @@
 package com.github.zhgxun.leetcode.linkedlist;
 
 import com.github.zhgxun.leetcode.ListNode;
+import com.github.zhgxun.leetcode.ListNodeUtil;
+
+import java.util.HashSet;
+import java.util.Set;
 
 /**
  * 给定一个单链表 L：  L0 → L1 → … → Ln-1 → Ln ，
@@ -8,16 +12,58 @@ import com.github.zhgxun.leetcode.ListNode;
  */
 public class ReorderList {
 
-    public void reorderList(ListNode head) {
-
+    public static void main(String[] args) {
+        ListNode node = new ReorderList().removeDuplicateNodes(ListNodeUtil.getListNode(new int[]{1, 2, 3, 3, 2, 1}));
+        ListNodeUtil.print(node);
     }
 
-    public static void main(String[] args) {
-        System.out.println(new ReorderList().search(new int[]{4, 5, 6, 7, 0, 1, 2}, 0));
-        System.out.println(new ReorderList().search(new int[]{4, 5, 6, 7, 0, 1, 2}, 3));
-        System.out.println(new ReorderList().search(new int[]{1}, 0));
-        System.out.println(new ReorderList().search(new int[]{1}, 1));
-        System.out.println(new ReorderList().search(new int[]{1, 3}, 3));
+    public ListNode removeDuplicateNodes(ListNode head) {
+        Set<Integer> set = new HashSet<>();
+        ListNode node = new ListNode(0);
+        ListNode nodeHead = node;
+        ListNode temp = head;
+        while (temp != null) {
+            if (!set.contains(temp.val)) {
+                set.add(temp.val);
+                node.next = temp;
+                node = node.next;
+            }
+            temp = temp.next;
+        }
+        node.next = null;
+
+        return nodeHead.next;
+    }
+
+    public void reorderList(ListNode head) {
+        // 1. 找链表中点 快慢指针法 慢指针每次走一步, 快指针每次走两步
+        ListNode slow = head, fast = head;
+        while (fast.next != null && fast.next.next != null) {
+            slow = slow.next;
+            fast = fast.next.next;
+        }
+
+        // 2. 反转后半段链表
+        ListNode tail = slow.next;
+        slow.next = null;
+        ListNode newHead = null;
+        while (tail != null) {
+            ListNode nextNode = tail.next;
+            tail.next = newHead;
+            newHead = tail;
+            tail = nextNode;
+        }
+
+        // 3. 依次拼接两段链表
+        ListNode temp = head;
+        while (newHead != null) {
+            ListNode nextNode = newHead.next;
+            newHead.next = temp.next;
+            temp.next = newHead;
+            temp = temp.next.next;
+
+            newHead = nextNode;
+        }
     }
 
     public int search(int[] nums, int target) {

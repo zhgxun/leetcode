@@ -2,9 +2,6 @@ package com.github.zhgxun.leetcode.array;
 
 import java.util.Arrays;
 import java.util.HashSet;
-import java.util.LinkedList;
-import java.util.Queue;
-import java.util.Set;
 
 /**
  * 200. 岛屿数量
@@ -104,5 +101,93 @@ public class NumIslands {
                 step.remove(str);
             }
         }
+    }
+
+    // 并查集
+    public int numIslandsV2(char[][] grid) {
+        if (grid == null || grid.length == 0) {
+            return 0;
+        }
+
+        UnionFind unionFind = new UnionFind(grid);
+        int colLen = grid.length;
+        int rowLen = grid[0].length;
+        for (int col = 0; col < colLen; col++) {
+            for (int row = 0; row < rowLen; row++) {
+                if (grid[col][row] == '1') {
+                    grid[col][row] = '0'; // 将其沉岛
+                    // 将上下左右的陆地连通
+                    int index = col * rowLen + row;
+                    if (col - 1 >= 0 && grid[col - 1][row] == '1') { // 上
+                        unionFind.union(index, (col - 1) * rowLen + row);
+                    }
+                    if (row + 1 < rowLen && grid[col][row + 1] == '1') { // 右
+                        unionFind.union(index, col * rowLen + row + 1);
+                    }
+                    if (col + 1 < colLen && grid[col + 1][row] == '1') { // 下
+                        unionFind.union(index, (col + 1) * rowLen + row);
+                    }
+                    if (row - 1 >= 0 && grid[col][row - 1] == '1') { // 左
+                        unionFind.union(index, col * rowLen + row - 1);
+                    }
+                }
+            }
+        }
+
+        return unionFind.getCount();
+    }
+}
+
+class UnionFind {
+    private int count;
+    private final int[] parent;
+    private final int[] rank;
+
+    // 初始化并查集
+    UnionFind(char[][] grid) {
+        int colLen = grid.length;
+        int rowLen = grid[0].length;
+        parent = new int[colLen * rowLen];
+        rank = new int[colLen * rowLen];
+        for (int col = 0; col < colLen; col++) {
+            for (int row = 0; row < rowLen; row++) {
+                int index = col * rowLen + row;
+                // 注意并查集的构成方式, 还是有点东西在里面的
+                if (grid[col][row] == '1') {
+                    parent[index] = index;
+                    count++;
+                }
+                rank[index] = 1;
+            }
+        }
+    }
+
+    public int find(int x) {
+        while (parent[x] != x) {
+            parent[x] = parent[parent[x]];
+            x = parent[x];
+        }
+        return x;
+    }
+
+    public void union(int p, int q) {
+        int rootP = find(p);
+        int rootQ = find(q);
+        if (rootP == rootQ) {
+            return;
+        }
+
+        if (rank[rootP] > rank[rootQ]) {
+            parent[rootQ] = rootP;
+            rank[rootP] += rank[rootQ];
+        } else {
+            parent[rootP] = rootQ;
+            rank[rootQ] += rank[rootP];
+        }
+        count--;
+    }
+
+    public int getCount() {
+        return this.count;
     }
 }

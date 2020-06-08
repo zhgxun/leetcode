@@ -8,6 +8,7 @@ package com.github.zhgxun.leetcode.string;
 public class MyAtoi {
 
     public static void main(String[] args) {
+        System.out.println(new MyAtoi().myAtoi("        "));
         System.out.println(new MyAtoi().myAtoi("42"));
         System.out.println(new MyAtoi().myAtoi("+42"));
         System.out.println(new MyAtoi().myAtoi("-42"));
@@ -18,9 +19,36 @@ public class MyAtoi {
     }
 
     public int myAtoi(String str) {
-        int result = 0;
-        int len = str.length();
-        int flag = 1;
+        int index = 0, sign = 1, total = 0;
+
+        // empty
+        if (str == null || str.length() == 0) return 0;
+
+        // remove space
+        while (index < str.length() && str.charAt(index) == ' ') index++;
+
+        // handle sign
+        if (index < str.length() && (str.charAt(index) == '+' || str.charAt(index) == '-')) {
+            sign = str.charAt(index) == '+' ? 1 : -1;
+            index++;
+        }
+
+        // convert number and avoid overflow
+        while (index < str.length()) {
+            int digit = str.charAt(index) - '0';
+            if (digit < 0 || digit > 9) break;
+            if ((total > (Integer.MAX_VALUE - digit) / 10)) {
+                return sign > 0 ? Integer.MAX_VALUE : Integer.MIN_VALUE;
+            }
+            total = total * 10 + digit;
+            index++;
+        }
+
+        return total * sign;
+    }
+
+    public int myAtoiV2(String str) {
+        int result = 0, len = str.length(), flag = 1;
         boolean isBlank = true;
         for (int i = 0; i < len; i++) {
             char c = str.charAt(i);

@@ -9,7 +9,7 @@ import java.util.Map;
 public class Simple {
 
     public int[] maxSlidingWindow(int[] nums, int k) {
-        int[] res = new int[nums.length -k + 1];
+        int[] res = new int[nums.length - k + 1];
         ArrayDeque<Integer> queue = new ArrayDeque<>(k);
         int index = 0;
         for (int i = 0; i < k; i++) {

@@ -34,6 +34,19 @@ public class MinimumTotal {
         return triangle.get(0).get(0);
     }
 
+    public int minimumTotal3(List<List<Integer>> triangle) {
+        if (triangle == null || triangle.size() == 0) return 0;
+
+        for (int col = triangle.size() - 2; col >= 0; col--) {
+            List<Integer> res = triangle.get(col + 1);
+            for (int row = 0; row < triangle.get(col).size(); row++) {
+                triangle.get(col).set(row, Math.min(res.get(row), res.get(row + 1)) + triangle.get(col).get(row));
+            }
+        }
+
+        return triangle.get(0).get(0);
+    }
+
     public int minimumTotal(List<List<Integer>> triangle) {
         if (triangle == null || triangle.size() == 0) {
             return 0;

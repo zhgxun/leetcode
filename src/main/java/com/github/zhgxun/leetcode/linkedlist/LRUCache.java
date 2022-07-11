@@ -1,4 +1,4 @@
-package com.github.zhgxun.leetcode;
+package com.github.zhgxun.leetcode.linkedlist;
 
 import java.util.HashMap;
 import java.util.Map;

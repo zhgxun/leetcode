@@ -12,7 +12,7 @@ public class Foo {
         synchronized (object) {
             while (flag != 1) object.wait();
             printFirst.run();
-            flag = 1;
+            flag = 2;
             object.notifyAll();
         }
     }

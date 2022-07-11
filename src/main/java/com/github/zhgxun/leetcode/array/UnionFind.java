@@ -1,4 +1,4 @@
-package com.github.zhgxun.leetcode;
+package com.github.zhgxun.leetcode.array;
 
 /**
  * 并查集 或者叫 DisjointSet

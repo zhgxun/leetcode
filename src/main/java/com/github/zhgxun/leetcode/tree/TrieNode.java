@@ -1,4 +1,4 @@
-package com.github.zhgxun.leetcode;
+package com.github.zhgxun.leetcode.tree;
 
 import java.util.Arrays;
 

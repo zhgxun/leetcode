@@ -1,4 +1,4 @@
-package com.github.zhgxun.leetcode;
+package com.github.zhgxun.leetcode.array;
 
 import java.util.ArrayList;
 import java.util.Arrays;

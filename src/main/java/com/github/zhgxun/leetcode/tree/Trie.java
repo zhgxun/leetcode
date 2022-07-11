@@ -1,4 +1,4 @@
-package com.github.zhgxun.leetcode;
+package com.github.zhgxun.leetcode.tree;
 
 /**
  * 208. 实现 Trie (前缀树)

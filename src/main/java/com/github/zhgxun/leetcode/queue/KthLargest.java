@@ -1,4 +1,4 @@
-package com.github.zhgxun.leetcode;
+package com.github.zhgxun.leetcode.queue;
 
 import java.util.PriorityQueue;
 

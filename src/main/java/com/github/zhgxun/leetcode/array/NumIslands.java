@@ -136,58 +136,58 @@ public class NumIslands {
 
         return unionFind.getCount();
     }
-}
 
-class UnionFind {
-    private int count;
-    private final int[] parent;
-    private final int[] rank;
+    static class UnionFind {
+        private int count;
+        private final int[] parent;
+        private final int[] rank;
 
-    // 初始化并查集
-    UnionFind(char[][] grid) {
-        int colLen = grid.length;
-        int rowLen = grid[0].length;
-        parent = new int[colLen * rowLen];
-        rank = new int[colLen * rowLen];
-        for (int col = 0; col < colLen; col++) {
-            for (int row = 0; row < rowLen; row++) {
-                int index = col * rowLen + row;
-                // 注意并查集的构成方式, 还是有点东西在里面的
-                if (grid[col][row] == '1') {
-                    parent[index] = index;
-                    count++;
+        // 初始化并查集
+        UnionFind(char[][] grid) {
+            int colLen = grid.length;
+            int rowLen = grid[0].length;
+            parent = new int[colLen * rowLen];
+            rank = new int[colLen * rowLen];
+            for (int col = 0; col < colLen; col++) {
+                for (int row = 0; row < rowLen; row++) {
+                    int index = col * rowLen + row;
+                    // 注意并查集的构成方式, 还是有点东西在里面的
+                    if (grid[col][row] == '1') {
+                        parent[index] = index;
+                        count++;
+                    }
+                    rank[index] = 1;
                 }
-                rank[index] = 1;
             }
         }
-    }
 
-    public int find(int x) {
-        while (parent[x] != x) {
-            parent[x] = parent[parent[x]];
-            x = parent[x];
-        }
-        return x;
-    }
-
-    public void union(int p, int q) {
-        int rootP = find(p);
-        int rootQ = find(q);
-        if (rootP == rootQ) {
-            return;
+        public int find(int x) {
+            while (parent[x] != x) {
+                parent[x] = parent[parent[x]];
+                x = parent[x];
+            }
+            return x;
         }
 
-        if (rank[rootP] > rank[rootQ]) {
-            parent[rootQ] = rootP;
-            rank[rootP] += rank[rootQ];
-        } else {
-            parent[rootP] = rootQ;
-            rank[rootQ] += rank[rootP];
-        }
-        count--;
-    }
+        public void union(int p, int q) {
+            int rootP = find(p);
+            int rootQ = find(q);
+            if (rootP == rootQ) {
+                return;
+            }
 
-    public int getCount() {
-        return this.count;
+            if (rank[rootP] > rank[rootQ]) {
+                parent[rootQ] = rootP;
+                rank[rootP] += rank[rootQ];
+            } else {
+                parent[rootP] = rootQ;
+                rank[rootQ] += rank[rootP];
+            }
+            count--;
+        }
+
+        public int getCount() {
+            return this.count;
+        }
     }
 }

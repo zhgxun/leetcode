@@ -1,4 +1,6 @@
-package com.github.zhgxun.leetcode;
+package com.github.zhgxun.leetcode.tree;
+
+import com.github.zhgxun.leetcode.TreeNode;
 
 import java.util.ArrayList;
 import java.util.LinkedList;

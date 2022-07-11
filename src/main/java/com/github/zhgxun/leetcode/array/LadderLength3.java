@@ -1,4 +1,4 @@
-package com.github.zhgxun.leetcode;
+package com.github.zhgxun.leetcode.array;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -8,10 +8,10 @@ import java.util.List;
 import java.util.Map;
 import java.util.Queue;
 
-public class LadderLength {
+public class LadderLength3 {
 
     public static void main(String[] args) {
-        System.out.println(new LadderLength().ladderLength("hit", "cog", Arrays.asList("hot", "dot", "dog", "lot", "log", "cog")));
+        System.out.println(new LadderLength3().ladderLength("hit", "cog", Arrays.asList("hot", "dot", "dog", "lot", "log", "cog")));
     }
 
     private final Map<String, List<String>> dict = new HashMap<>();

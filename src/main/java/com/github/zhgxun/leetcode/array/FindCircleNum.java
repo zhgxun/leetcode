@@ -1,7 +1,5 @@
 package com.github.zhgxun.leetcode.array;
 
-import com.github.zhgxun.leetcode.UnionFind;
-
 /**
  * 547. 朋友圈
  * <p>

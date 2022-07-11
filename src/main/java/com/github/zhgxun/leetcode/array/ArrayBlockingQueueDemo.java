@@ -1,4 +1,4 @@
-package com.github.zhgxun.leetcode;
+package com.github.zhgxun.leetcode.array;
 
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.ExecutorService;

@@ -1,4 +1,4 @@
-package com.github.zhgxun.leetcode;
+package com.github.zhgxun.leetcode.thread;
 
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;

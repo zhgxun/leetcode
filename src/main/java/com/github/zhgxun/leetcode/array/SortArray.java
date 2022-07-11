@@ -19,11 +19,6 @@ public class SortArray {
         return nums;
     }
 
-    public int[] sortArrayV2(int[] nums) {
-        mergeSort(nums, 0, nums.length - 1);
-        return nums;
-    }
-
     public void quickSort(int[] a, int left, int right) {
         if (left > right) return;
         int index = left; // 记录数组移动的左边界位置
@@ -42,6 +37,11 @@ public class SortArray {
 
         quickSort(a, left, index - 1);
         quickSort(a, index + 1, right);
+    }
+
+    public int[] sortArrayV2(int[] nums) {
+        mergeSort(nums, 0, nums.length - 1);
+        return nums;
     }
 
     public void mergeSort(int[] a, int left, int right) {

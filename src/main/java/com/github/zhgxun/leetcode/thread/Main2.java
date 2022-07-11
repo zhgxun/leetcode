@@ -1,4 +1,6 @@
-package com.github.zhgxun.leetcode;
+package com.github.zhgxun.leetcode.thread;
+
+import com.github.zhgxun.leetcode.TreeNode;
 
 import java.util.ArrayDeque;
 import java.util.ArrayList;

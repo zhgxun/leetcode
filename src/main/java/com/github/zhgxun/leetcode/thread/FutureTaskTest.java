@@ -1,4 +1,4 @@
-package com.github.zhgxun.leetcode;
+package com.github.zhgxun.leetcode.thread;
 
 import java.time.LocalDateTime;
 import java.util.concurrent.Callable;
